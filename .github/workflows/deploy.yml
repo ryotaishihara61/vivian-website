@@ -14,9 +14,10 @@ jobs:
 
       - name: FTP Deploy to Lolipop
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
-          dangerous-clean-slate: true
+with:
+  server: ${{ secrets.FTP_HOST }}
+  username: ${{ secrets.FTP_USER }}
+  password: ${{ secrets.FTP_PASSWORD }}
+  server-dir: /
+  dangerous-clean-slate: true
+
