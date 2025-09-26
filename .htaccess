@@ -1,0 +1,4 @@
+RewriteEngine On
+# wwwありをwwwなしにリダイレクト
+RewriteCond %{HTTP_HOST} ^www\.vivian-selflove\.site$ [NC]
+RewriteRule ^(.*)$ https://vivian-selflove.site/$1 [L,R=301]
