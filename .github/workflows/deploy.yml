@@ -27,5 +27,5 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./out/        # ← GitHub上で生成される静的ファイルフォルダ
-          server-dir: /mahounogakuen/vivian/      # ← ロリポップの公開フォルダ vivian を直指定！
+          server-dir: /vivian/      # ← ロリポップの公開フォルダ vivian を直指定！
           dangerous-clean-slate: true
