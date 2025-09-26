@@ -3,6 +3,7 @@ name: Deploy to Lolipop
 on:
   push:
     branches:
+      - master   # masterブランチにpushしたら自動デプロイ
       - main   # mainブランチにpushしたら自動デプロイ
 
 jobs:
