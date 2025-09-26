@@ -21,7 +21,14 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build   # ここで ./out が生成される
+        run: npm run build   # out/ が生成される
+
+      # 画像フォルダを事前に作成
+      - name: Create images directory if not exists
+        run: |
+          curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+               -X MKCOL \
+               "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/assets/images" || true
 
       - name: Deploy via WebDAV with curl
         run: |
