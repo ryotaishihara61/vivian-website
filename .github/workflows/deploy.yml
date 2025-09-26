@@ -1,22 +1,24 @@
-name: Deploy to Lolipop
+name: Deploy to Lolipop via SFTP
 
 on:
   push:
     branches:
-      - master   # masterブランチにpushしたら自動デプロイ
-      - main   # mainブランチにpushしたら自動デプロイ
+      - master
+      - main
+
 
 jobs:
-  ftp-deploy:
+  sftp-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: FTP Deploy to Lolipop
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_DIR }}
+          local_path: "./"
+          remote_path: "./"   # ← ログイン直後にアップロード
+          sftp_only: true
