@@ -17,10 +17,12 @@ jobs:
 
       - name: Deploy via WebDAV with curl
         run: |
-          for file in $(find ./out -type f); do
+          shopt -s dotglob  # ← ドットファイルも find に含める
+          for file in $(find ./out -type f -o -name ".htaccess"); do
             remote_path="${file#./out/}"
             echo "Uploading $file to $remote_path"
-            curl -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+            curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+                 --create-dirs \
                  -T "$file" \
                  "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/$remote_path"
           done
