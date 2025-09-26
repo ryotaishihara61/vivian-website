@@ -3,27 +3,22 @@ name: Deploy to Lolipop
 on:
   push:
     branches:
-      - master   # デフォルトブランチが master の場合
+      - master   # ← リポジトリのデフォルトブランチ名
 
 jobs:
-  ftp-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      # ビルドが必要ならここに npm run build を追加
+      # - name: Install dependencies
+      #   run: npm install
+      # - name: Build project
+      #   run: npm run build
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      - name: Deploy to Lolipop
+      - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.lolipop.jp
@@ -31,5 +26,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          server-dir: mahounogakuen/vivian/   # 公開フォルダ (独自ドメイン設定で指定済み)
-          local-dir: ./out/                   # Vite のビルド成果物
+          local-dir: ./out/        # ← GitHub上で生成される静的ファイルフォルダ
+          server-dir: vivian/      # ← ロリポップの公開フォルダ vivian を直指定！
+          dangerous-clean-slate: true
