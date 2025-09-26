@@ -21,6 +21,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local_folder: .
           remote_folder: /
-          include: '**/*'
-          exclude: '.git*'
+          include: '["**/*"]'
+          exclude: '[".git*", ".github*", "node_modules"]'
           passive: true
