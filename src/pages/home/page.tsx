@@ -153,40 +153,69 @@ export default function Home() {
 
   const programs = [
     {
-      title: "幼稚園・保育園での活用",
-      description: "集団生活の中で、自分らしさを大切にしながら友達との違いを受け入れる心を育みます",
+      title: "子どもから大人まで",
+      description: "誰もが自分の感情を大切にし、心を安心させながら、人とのつながりを深め、自分らしく生きる力を育んでいきます。",
       image: "A warm kindergarten classroom scene with children sitting in a circle listening to a story, soft natural lighting, rainbow decorations on walls, peaceful and nurturing atmosphere, teacher reading colorful book to engaged young students"
     },
     {
-      title: "小学校での道徳教育",
-      description: "道徳の時間に活用し、多様性の理解と自己肯定感の向上を図ります",
+      title: "仲間と一緒に",
+      description: "コミュニティや集まりの場で、お互いの違いを受け入れ、支え合う心が自然に育ちます。",
       image: "Elementary school classroom with diverse children engaged in discussion, teacher reading a colorful book, inclusive and supportive learning environment, students raising hands enthusiastically, educational posters on walls"
     },
     {
-      title: "家庭での親子時間",
-      description: "親子のコミュニケーションツールとして、お子様の心の成長をサポートします",
+      title: "学校や学びの場で",
+      description: "道徳や探究の時間に取り入れることで、自己理解・他者理解・自己肯定感、人間関係スキルが、ぐっと深まります。",
+      image: "Elementary school classroom with diverse children engaged in discussion, teacher reading a colorful book, inclusive and supportive learning environment, students raising hands enthusiastically, educational posters on walls"
+    },
+    {
+      title: "親子で楽しむ時間に",
+      description: "朗読を通じて気持ちを分かち合い、親子の対話や心の成長をあたたかくサポートします。",
       image: "Cozy family reading time at home, parent and child cuddled together reading a rainbow-themed book, warm evening light, loving atmosphere, comfortable sofa with soft pillows and blankets"
     }
   ];
 
   const testimonials = [
     {
-      name: "田中 美香さん",
-      role: "小学校教諭",
-      comment: "子どもたちが自分の「弱み」について話すようになり、クラス全体が温かい雰囲気になりました。",
-      image: "Professional female teacher portrait with warm smile, classroom background with colorful educational materials, kind and nurturing expression, professional attire, inspiring educator"
+      name: "教師",
+      role: "",
+      comment: "虹のワークで、弱みの裏側にある魅力を見つけるために、視点や解釈が自然と広がっていくのを実感しました。教室の空気がやわらぎ、子ども同士の関わり方も変わってきています。",
+      image: "🎓",
+      isIcon: true
     },
     {
-      name: "佐藤 家族",
-      role: "保護者",
-      comment: "娘が「私の虹は優しさだよ」と言ってくれた時、成長を感じて涙が出ました。",
-      image: "Happy family portrait with mother, father and young daughter, rainbow artwork visible in background, warm home environment, loving family bond, joyful expressions"
+      name: "小学生",
+      role: "",
+      comment: "みんなの前で声に出すのはドキドキしたけど、すごく楽しかった！\"わかる！あなたの虹が素敵！\"って思えたし、自分らしさを褒めてもらえてうれしかったです。",
+      image: "📚",
+      isIcon: true
     },
     {
-      name: "山田 孝子さん",
-      role: "読み聞かせボランティア",
-      comment: "読み聞かせ会では子どもたちの目がキラキラと輝いていて、素晴らしい反応でした。",
-      image: "Community volunteer reading to a group of engaged children in a library setting, warm and inviting atmosphere, children sitting attentively, books and educational materials around"
+      name: "中高生",
+      role: "",
+      comment: "自分の気持ちや考えを人に言うのが苦手だったけど、ここでは安心できました。同じ場で友だちを応援できたことも、すごくうれしかったです。",
+      image: "✨",
+      isIcon: true
+    },
+    {
+      name: "子育て中の親",
+      role: "",
+      comment: "子どもが\"弱いところも虹なんだよね\"と言ってくれて胸がいっぱいになりました。親としても\"そのままでいい\"と受けとめる自信につながりました。",
+      image: "💝",
+      isIcon: true
+    },
+    {
+      name: "一般女性",
+      role: "",
+      comment: "自分の気持ちを声に出すだけで心がすっと軽くなりました。朗読を通して安心して人とつながれる感覚を味わえたのが、とても新鮮でした。",
+      image: "🌈",
+      isIcon: true
+    },
+    {
+      name: "経営者",
+      role: "",
+      comment: "本音の声を引き出し合える、対話し合える、まさにこういう教育現場が欲しいと思っていました。このプログラムが様々な地域に広がってほしいと強く感じました。",
+      image: "💼",
+      isIcon: true
     }
   ];
 
@@ -399,7 +428,7 @@ export default function Home() {
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-left">
               「ビビアン」は、自分の弱みを受け入れることから始まる成長の物語です。<br />
-              主人公と一緒に、子どもたちは自分だけの「虹」を見つけていきます。
+              主人公と一緒に、自分だけの「虹」を見つけていきます。
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-4xl mx-auto">
@@ -408,9 +437,9 @@ export default function Home() {
                 <i className="ri-user-heart-fill text-3xl text-pink-500"></i>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">自己理解と自己肯定感</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">自己理解・自己肯定感</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  内面を見つめ、ありのままの自分を受け入れる力を育みます。自分らしさを大切にする心を育てます。
+                  内面を見つめ、ありのままの自分を受け入れる力、自分らしさを大切にする心を育みます。
                 </p>
               </div>
             </div>
@@ -421,7 +450,7 @@ export default function Home() {
               <div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">共感力・コミュニケーション</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  相手の気持ちに寄り添い、自分の感情を言葉で表現する力を身につけます。
+                  相手の気持ちに寄り添い、自分の感情を言葉で表現する力、対話力を身につけます。
                 </p>
               </div>
             </div>
@@ -432,7 +461,7 @@ export default function Home() {
               <div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">多様性の尊重</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  みんな違ってみんな良い。個性を大切にし、他者を尊敬する心を育みます。
+                  「みんな違ってみんな良い」。個性を大切にし、自他の違いを活かし合う心を育みます。
                 </p>
               </div>
             </div>
@@ -445,10 +474,10 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              情装教育プログラム
+              朗読×セルフラブ 体感ワーク・プログラム
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-left">
-              様々な場面でご活用いただける、心の成長を促すプログラムをご提案しています
+              「声に出し、気持ちを味わいながら、弱みを"虹"に変える学びの時間」
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -487,7 +516,7 @@ export default function Home() {
               朗読ワークの事例
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-left">
-              実際にビビアンの朗読ワークを体験された方々の声をお聞きください
+              実際に『ビビアン』の朗読ワークを体験された方々の声をご紹介します。子どもから大人まで、それぞれの立場でこんな気づきや変化がありました。
             </p>
           </div>
           
@@ -501,14 +530,19 @@ export default function Home() {
                   <div key={index} className="w-full flex-shrink-0 px-4">
                     <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl shadow-lg mx-auto max-w-2xl">
                       <div className="flex items-center mb-6">
-                        <img
-                          src={`https://readdy.ai/api/search-image?query=$%7BencodeURIComponent%28testimonial.image%29%7D&width=80&height=80&seq=testimonial-${index}&orientation=squarish`}
-                          alt={testimonial.name}
-                          className="w-16 h-16 rounded-full object-cover mr-4"
-                        />
+                        {testimonial.isIcon ? (
+                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center mr-4">
+                            <span className="text-2xl">{testimonial.image}</span>
+                          </div>
+                        ) : (
+                          <img
+                            src={`https://readdy.ai/api/search-image?query=$%7BencodeURIComponent%28testimonial.image%29%7D&width=80&height=80&seq=testimonial-${index}&orientation=squarish`}
+                            alt={testimonial.name}
+                            className="w-16 h-16 rounded-full object-cover mr-4"
+                          />
+                        )}
                         <div>
                           <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-                          <p className="text-gray-600 text-sm">{testimonial.role}</p>
                         </div>
                       </div>
                       <p className="text-gray-700 leading-relaxed italic text-lg mb-6">
@@ -689,8 +723,8 @@ export default function Home() {
                 朗読ワークのご依頼
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto text-left">
-                学校、幼稚園、地域コミュニティ、企業イベントなど、様々な場所で朗読ワークを開催いたします。<br />
-                子どもたちの心の成長をサポートする特別な時間を一緒に作りませんか？
+                学校・園・地域・コミュニティ、企業イベントや親子の集まりなど、さまざまな場面で開催いただけます。<br />
+                朗読と体感ワークを通じて、"心を育む特別な時間"を一緒に届けませんか？
               </p>
             </div>
 
@@ -700,36 +734,59 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-gray-800 mb-4">こんな場所でご活用いただけます</h3>
                   <ul className="space-y-3">
                     {[
-                      "幼稚園・保育園",
-                      "小学校・中学校",
-                      "図書館・児童館",
-                      "地域コミュニティセンター",
-                      "企業の家族向けイベント",
-                      "親子カフェ・書店"
+                      "小学校・中学校・高校",
+                      "道徳・総合・探究学習などに",
+                      "学童・フリースクール",
+                      "放課後や居場所づくりのプログラムに",
+                      "地域コミュニティ・イベント",
+                      "世代を超えた交流や文化活動に",
+                      "コミュニケーション研修・対話ワークショップ",
+                      "社会人や団体向けの人間関係づくりに"
                     ].map((place, i) => (
-                      <li key={i} className="flex items-center text-gray-700">
-                        <i className="ri-check-line text-green-500 mr-3"></i>
-                        {place}
+                      <li key={i} className="flex items-start text-gray-700">
+                        <i className="ri-check-line text-green-500 mr-3 mt-1 flex-shrink-0"></i>
+                        <span>{place}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="bg-white p-6 rounded-2xl shadow-lg">
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">プログラム内容</h3>
-                  <ul className="space-y-3">
-                    {[
-                      "絵本の朗読（30分）",
-                      "参加型ワークショップ（30分）",
-                      "みんなで描く虹のアート（30分）"
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-center text-gray-700">
-                        <i className="ri-bookmark-fill text-purple-500 mr-3"></i>
-                        {item}
-                      </li>
-                    ))}
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">プログラムの流れ</h3>
+                  <p className="text-gray-600 mb-4 text-sm">「絵本の朗読」と「虹ワーク」の2部構成です。</p>
 
-                  </ul>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-2">絵本の朗読（30分）</h4>
+                      <p className="text-sm text-gray-600 mb-2">スライド映像と音楽に合わせて物語の世界へ。</p>
+                      <p className="text-sm text-gray-600">ただ聴くだけでなく、登場人物を演じ"声"で表現することで、想像力と感性を育みます。</p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-2">虹のワーク（30〜60分）</h4>
+                      <p className="text-sm text-gray-600 mb-2">対話や体験を通して、</p>
+                      <ul className="text-sm text-gray-600 space-y-1 ml-4">
+                        <li>- 自己理解・自己肯定感</li>
+                        <li>- 共感力・コミュニケーション</li>
+                        <li>- 多様性の尊重</li>
+                      </ul>
+                      <p className="text-sm text-gray-600 mt-2">を自然に育みます。</p>
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-gray-200">
+                      <div className="space-y-3">
+                        <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-3 rounded-lg">
+                          <h5 className="font-semibold text-gray-800 text-sm">⭐️ 一番人気プラン</h5>
+                          <p className="text-sm text-gray-600">①朗読 ＋ ②虹ワーク（40〜90分）</p>
+                        </div>
+
+                        <div className="bg-blue-50 p-3 rounded-lg">
+                          <h5 className="font-semibold text-gray-800 text-sm">⭐️ お試しプラン</h5>
+                          <p className="text-sm text-gray-600">①朗読のみ（30分）</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -742,8 +799,8 @@ export default function Home() {
                     お申し込みフォーム
                   </h3>
                   <p className="text-gray-600 leading-relaxed mb-8 text-left">
-                    朗読ワークのご依頼やご質問は、<br />
-                    Googleフォームからお気軽にお問い合わせください。
+                    朗読ワークのご依頼やご質問は、こちらからお気軽にどうぞ。<br />
+                    小規模の会や試験的な開催も大歓迎です。まずはご相談ください。
                   </p>
                 </div>
 
@@ -757,7 +814,7 @@ export default function Home() {
                     className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 px-8 rounded-lg font-bold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center"
                   >
                     <i className="ri-external-link-fill mr-3"></i>
-                    お申し込み
+                    朗読ワークに申し込む
                   </button>
                   <p className="text-xs text-gray-500 mt-4">
                     ※ 新しいタブでGoogleフォームが開きます
