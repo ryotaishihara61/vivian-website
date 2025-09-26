@@ -1,18 +1,32 @@
-- name: Deploy via WebDAV with curl
-  run: |
-    find ./out -type f | while read file; do
-      remote_path="${file#./out/}"
-      echo "Uploading $file to $remote_path"
-      curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
-           --create-dirs \
-           -T "$file" \
-           "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/$remote_path"
-    done
+name: Deploy to Lolipop via WebDAV
 
-    # .htaccess を明示的にアップロード
-    if [ -f ".htaccess" ]; then
-      echo "Uploading .htaccess"
-      curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
-           -T ".htaccess" \
-           "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/.htaccess"
-    fi
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy via WebDAV with curl
+        run: |
+          find ./out -type f | while read file; do
+            remote_path="${file#./out/}"
+            echo "Uploading $file to $remote_path"
+            curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+                 --create-dirs \
+                 -T "$file" \
+                 "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/$remote_path"
+          done
+
+          # .htaccess を明示的にアップロード
+          if [ -f ".htaccess" ]; then
+            echo "Uploading .htaccess"
+            curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+                 -T ".htaccess" \
+                 "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/.htaccess"
+          fi
