@@ -1,21 +1,23 @@
-name: Deploy to Lolipop
+name: FTP Deploy
 
 on:
   push:
-    branches:
-      - main   # mainブランチにpushしたら自動デプロイ
+    branches: [ master ]
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: FTP Deploy to Lolipop
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      - name: Build project
+        run: npm install && npm run build
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_DIR }}
+          server-dir: vivian/   # 公開フォルダ
+          local-dir: out/       # ← out フォルダをアップロード
