@@ -3,25 +3,23 @@ name: Deploy to Lolipop
 on:
   push:
     branches:
-      - master
+      - master   # ← デフォルトブランチが master ならこのまま
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: FTP Deploy
         uses: sand4rt/ftp-deployer@v1.5
         with:
+          sftp: false
           host: ${{ secrets.FTP_HOST }}
           port: 21
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_folder: .
-          remote_folder: /
+          remote_folder: vivian/   # 公開フォルダ名
+          local_folder: ./         # リポジトリのルートからアップロード
           cleanup: false
-          include: '["**/*"]'
-          exclude: '[".git*", ".github*", "node_modules", "**/*.ts", "**/*.d.ts"]'
           passive: true
