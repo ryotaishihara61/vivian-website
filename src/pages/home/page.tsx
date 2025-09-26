@@ -192,39 +192,39 @@ export default function Home() {
 
   const sessionImages = [
     {
-      src: "/images/ws-01.jpg",
+      src: "/assets/images/ws-01.jpg",
       alt: "朗読ワークの様子 1"
     },
     {
-      src: "/images/ws-02.jpg",
+      src: "/assets/images/ws-02.jpg",
       alt: "朗読ワークの様子 2"
     },
     {
-      src: "/images/ws-03.jpg",
+      src: "/assets/images/ws-03.jpg",
       alt: "朗読ワークの様子 3"
     },
     {
-      src: "/images/ws-04.jpg",
+      src: "/assets/images/ws-04.jpg",
       alt: "朗読ワークの様子 4"
     },
     {
-      src: "/images/ws-05.jpg",
+      src: "/assets/images/ws-05.jpg",
       alt: "朗読ワークの様子 5"
     },
     {
-      src: "/images/ws-06.jpg",
+      src: "/assets/images/ws-06.jpg",
       alt: "朗読ワークの様子 6"
     },
     {
-      src: "/images/ws-07.jpg",
+      src: "/assets/images/ws-07.jpg",
       alt: "朗読ワークの様子 7"
     },
     {
-      src: "/images/ws-08.jpg",
+      src: "/assets/images/ws-08.jpg",
       alt: "朗読ワークの様子 8"
     },
     {
-      src: "/images/ws-09.jpg",
+      src: "/assets/images/ws-09.jpg",
       alt: "朗読ワークの様子 9"
     }
   ];

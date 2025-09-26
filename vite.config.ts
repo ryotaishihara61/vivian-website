@@ -4,18 +4,20 @@ import { resolve } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
 
 const base = process.env.BASE_PATH || '/'
-const isPreview = process.env.IS_PREVIEW  ? true : false;
+const isPreview = process.env.IS_PREVIEW ? true : false
+
 // https://vite.dev/config/
 export default defineConfig({
   define: {
-   __BASE_PATH__: JSON.stringify(base),
-   __IS_PREVIEW__: JSON.stringify(isPreview)
+    __BASE_PATH__: JSON.stringify(base),
+    __IS_PREVIEW__: JSON.stringify(isPreview),
   },
-  plugins: [react(),
+  plugins: [
+    react(),
     AutoImport({
       imports: [
         {
-          'react': [
+          react: [
             'React',
             'useState',
             'useEffect',
@@ -39,8 +41,8 @@ export default defineConfig({
             'createContext',
             'createElement',
             'cloneElement',
-            'isValidElement'
-          ]
+            'isValidElement',
+          ],
         },
         {
           'react-router-dom': [
@@ -51,16 +53,13 @@ export default defineConfig({
             'Link',
             'NavLink',
             'Navigate',
-            'Outlet'
-          ]
+            'Outlet',
+          ],
         },
         // React i18n
         {
-          'react-i18next': [
-            'useTranslation',
-            'Trans'
-          ]
-        }
+          'react-i18next': ['useTranslation', 'Trans'],
+        },
       ],
       dts: true,
     }),
@@ -69,14 +68,15 @@ export default defineConfig({
   build: {
     sourcemap: true,
     outDir: 'out',
+    assetsDir: 'assets', // ← 追加：すべて assets/ にまとまる
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src')
-    }
+      '@': resolve(__dirname, './src'),
+    },
   },
   server: {
     port: 3000,
     host: '0.0.0.0',
-  }
+  },
 })
