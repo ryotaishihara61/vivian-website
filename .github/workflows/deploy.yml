@@ -24,4 +24,4 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: mahounogakuen/vivian/   # ← ロリポップの公開フォルダ
-          local-dir: ./dist/                  # ← Vite の build 出力先
+          local-dir: ./out/                  # ← Vite の build 出力先
