@@ -1,23 +1,27 @@
-name: FTP Deploy
+name: Deploy to Lolipop
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master   # ← GitHub のデフォルトブランチ名が master ならこのまま
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout source
+        uses: actions/checkout@v3
 
       - name: Build project
-        run: npm install && npm run build
+        run: |
+          npm install
+          npm run build
 
-      - name: FTP Deploy
+      - name: Deploy to Lolipop
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
+          server: ftp.lolipop.jp
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: vivian/   # 公開フォルダ
-          local-dir: out/       # ← out フォルダをアップロード
+          server-dir: mahounogakuen/vivian/   # ← ロリポップの公開フォルダ
+          local-dir: ./dist/                  # ← Vite の build 出力先
