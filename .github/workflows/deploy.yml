@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_folder: .
-          remote_folder: /
+          remote_folder: /vivian/
           include: '["**/*"]'
           exclude: '[".git*", ".github*", "node_modules"]'
           passive: true
