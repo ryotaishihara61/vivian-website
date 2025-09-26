@@ -3,7 +3,7 @@ name: Deploy to Lolipop via WebDAV
 on:
   push:
     branches:
-      - master   # ブランチ名に合わせる
+      - master
 
 jobs:
   deploy:
@@ -12,13 +12,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # ビルドが必要ならここで
+      # 必要ならビルド
       # - run: npm install && npm run build
 
-      - name: Deploy via WebDAV
-        uses: buu700/webdav-upload@v1.3.0
-        with:
-          url: https://staba-mahounogakuen.webdav-lolipop.jp/vivian/   # 公開フォルダ
-          username: ${{ secrets.WEBDAV_USER }}
-          password: ${{ secrets.WEBDAV_PASS }}
-          directory: ./out
+      - name: Deploy via WebDAV with curl
+        run: |
+          for file in $(find ./out -type f); do
+            remote_path="${file#./out/}"
+            echo "Uploading $file to $remote_path"
+            curl -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+                 -T "$file" \
+                 "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/$remote_path"
+          done
