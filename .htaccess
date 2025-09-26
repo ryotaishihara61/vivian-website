@@ -1,4 +1,9 @@
 RewriteEngine On
-# wwwありをwwwなしにリダイレクト
+
+# http → https にリダイレクト
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://vivian-selflove.site/$1 [L,R=301]
+
+# wwwあり → wwwなしにリダイレクト
 RewriteCond %{HTTP_HOST} ^www\.vivian-selflove\.site$ [NC]
 RewriteRule ^(.*)$ https://vivian-selflove.site/$1 [L,R=301]
