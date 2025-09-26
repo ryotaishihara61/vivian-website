@@ -1,24 +1,8 @@
-name: Deploy to Lolipop via SFTP
-
-on:
-  push:
-    branches:
-      - master
-      - main
-
-
-jobs:
-  sftp-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_path: "./"
-          remote_path: "./"   # ← ログイン直後にアップロード
-          sftp_only: true
+- name: FTP Deploy to Lolipop
+  uses: SamKirkland/FTP-Deploy-Action@4.3.0
+  with:
+    server: ${{ secrets.FTP_HOST }}
+    username: ${{ secrets.FTP_USER }}
+    password: ${{ secrets.FTP_PASSWORD }}
+    server-dir: /
+    dangerous-clean-slate: true
