@@ -99,14 +99,51 @@ export default function Home() {
       canonicalLink.setAttribute('href', siteUrl);
     }
 
-    // Open Graphのog:urlを設定
-    let ogUrlMeta = document.querySelector('meta[property="og:url"]');
-    if (!ogUrlMeta) {
-      ogUrlMeta = document.createElement('meta');
-      ogUrlMeta.setAttribute('property', 'og:url');
-      document.head.appendChild(ogUrlMeta);
-    }
-    ogUrlMeta.setAttribute('content', siteUrl);
+    // Open Graph設定
+    const ogProperties = [
+      { property: 'og:url', content: siteUrl },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:title', content: 'セルフラブ絵本ビビアン | あなたの虹はなあに？' },
+      { property: 'og:description', content: '朗読とワークで「弱みを好きになれる」セルフラブの物語。子どもたちが自分らしさを大切にし、他者を尊敬する心を育む絵本です。朗読ワークのご依頼も承ります。' },
+      { property: 'og:image', content: 'https://static.readdy.ai/image/eaa52119033ac8864aa00eb190fc57f3/73cee288bc799de519e17daf49b813a4.png' },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: 'セルフラブ絵本ビビアン - 朗読とワークで弱みを好きになれる物語' },
+      { property: 'og:site_name', content: 'Self Love LAB.事務局' },
+      { property: 'og:locale', content: 'ja_JP' }
+    ];
+
+    // Twitter Card設定
+    const twitterProperties = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@selflove.laboratory' },
+      { name: 'twitter:title', content: 'セルフラブ絵本ビビアン | あなたの虹はなあに？' },
+      { name: 'twitter:description', content: '朗読とワークで「弱みを好きになれる」セルフラブの物語。子どもたちが自分らしさを大切にし、他者を尊敬する心を育む絵本です。' },
+      { name: 'twitter:image', content: 'https://static.readdy.ai/image/eaa52119033ac8864aa00eb190fc57f3/73cee288bc799de519e17daf49b813a4.png' },
+      { name: 'twitter:image:alt', content: 'セルフラブ絵本ビビアン - 朗読とワークで弱みを好きになれる物語' }
+    ];
+
+    // OGPメタタグを設定
+    ogProperties.forEach(({ property, content }) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    });
+
+    // Twitter Cardメタタグを設定
+    twitterProperties.forEach(({ name, content }) => {
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    });
   }, []);
 
   // Auto-play slider for testimonials
