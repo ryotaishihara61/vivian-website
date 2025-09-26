@@ -302,41 +302,73 @@ export default function Home() {
     });
   };
 
-  // Touch event handlers
+  // Touch and mouse event handlers
+  const handleStart = (clientX: number) => {
+    touchStartX.current = clientX;
+    touchEndX.current = 0;
+  };
+
+  const handleMove = (clientX: number) => {
+    touchEndX.current = clientX;
+  };
+
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX;
+    handleStart(e.targetTouches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.targetTouches[0].clientX;
+    e.preventDefault();
+    handleMove(e.targetTouches[0].clientX);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    handleStart(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (touchStartX.current !== 0) {
+      handleMove(e.clientX);
+    }
   };
 
   const handleTestimonialTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
+    if (touchStartX.current === 0 || touchEndX.current === 0) return;
 
     const distance = touchStartX.current - touchEndX.current;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
+
+    console.log('Testimonial swipe:', { distance, isLeftSwipe, isRightSwipe });
 
     if (isLeftSwipe) {
       nextTestimonial();
     } else if (isRightSwipe) {
       prevTestimonial();
     }
+
+    // Reset touch positions
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   const handleImageSlideTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
+    if (touchStartX.current === 0 || touchEndX.current === 0) return;
 
     const distance = touchStartX.current - touchEndX.current;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
+
+    console.log('Image swipe:', { distance, isLeftSwipe, isRightSwipe });
 
     if (isLeftSwipe) {
       nextImageSlide();
     } else if (isRightSwipe) {
       prevImageSlide();
     }
+
+    // Reset touch positions
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   return (
@@ -566,11 +598,15 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div
               ref={testimonialRef}
-              className="relative overflow-hidden select-none"
+              className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTestimonialTouchEnd}
-              style={{ touchAction: 'pan-y' }}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleTestimonialTouchEnd}
+              onMouseLeave={handleTestimonialTouchEnd}
+              style={{ touchAction: 'none' }}
             >
               <div
                 className="flex transition-transform duration-500 ease-in-out"
@@ -656,11 +692,15 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div
               ref={imageSlideRef}
-              className="relative overflow-hidden rounded-2xl select-none"
+              className="relative overflow-hidden rounded-2xl select-none cursor-grab active:cursor-grabbing"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleImageSlideTouchEnd}
-              style={{ touchAction: 'pan-y' }}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleImageSlideTouchEnd}
+              onMouseLeave={handleImageSlideTouchEnd}
+              style={{ touchAction: 'none' }}
             >
               <div
                 className="flex transition-transform duration-500 ease-in-out"
