@@ -1,25 +1,19 @@
-name: Deploy to Lolipop
+name: FTP Deploy
 
 on:
   push:
-    branches:
-      - master   # ← デフォルトブランチが master ならこのまま
+    branches: [ master ]
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: FTP Deploy
-        uses: sand4rt/ftp-deployer@v1.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          sftp: false
-          host: ${{ secrets.FTP_HOST }}
-          port: 21
+          server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          remote_folder: /vivian/   # 公開フォルダ名
-          local_folder: ./         # リポジトリのルートからアップロード
-          cleanup: false
-          passive: true
+          server-dir: vivian/   # 公開フォルダ
+          local-dir: ./         # リポジトリのルート
