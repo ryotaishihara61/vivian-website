@@ -111,13 +111,45 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  // Auto-play slider for images
+  // Auto-play slider for images with responsive calculation
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageSlide((prev) => (prev + 1) % sessionImages.length);
+      setCurrentImageSlide((prev) => {
+        // Calculate max slides based on screen size
+        const getMaxSlides = () => {
+          if (window.innerWidth >= 1024) {
+            // lg: 3 columns, so max slide is total - 3 + 1
+            return Math.max(0, sessionImages.length - 3);
+          } else if (window.innerWidth >= 768) {
+            // md: 2 columns, so max slide is total - 2 + 1
+            return Math.max(0, sessionImages.length - 2);
+          } else {
+            // sm: 1 column, so max slide is total - 1
+            return sessionImages.length - 1;
+          }
+        };
+
+        const maxSlides = getMaxSlides();
+        return prev >= maxSlides ? 0 : prev + 1;
+      });
     }, 3500);
     return () => clearInterval(timer);
   }, []);
+
+  // Handle window resize to reset slider position if needed
+  useEffect(() => {
+    const handleResize = () => {
+      const maxSlides = getMaxSlides();
+      if (currentImageSlide > maxSlides) {
+        setCurrentImageSlide(maxSlides);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, [currentImageSlide]);
 
   const programs = [
     {
@@ -160,28 +192,40 @@ export default function Home() {
 
   const sessionImages = [
     {
-      src: "Children sitting in a circle during story time, teacher holding a colorful rainbow book, warm classroom lighting, engaged young faces listening attentively, educational setting with bright decorations",
-      alt: "読み聞かせ会の様子 1"
+      src: "/images/ws-01.jpg",
+      alt: "朗読ワークの様子 1"
     },
     {
-      src: "Group of diverse children laughing and discussing after reading session, rainbow artwork displayed on classroom walls, joyful educational environment, children showing excitement and engagement",
-      alt: "読み聞かせ会の様子 2"
+      src: "/images/ws-02.jpg",
+      alt: "朗読ワークの様子 2"
     },
     {
-      src: "Parent and child reading together at home, cozy living room setting with soft pillows, rainbow-themed book open between them, intimate bonding moment, warm family atmosphere",
-      alt: "読み聞かせ会の様子 3"
+      src: "/images/ws-03.jpg",
+      alt: "朗読ワークの様子 3"
     },
     {
-      src: "Library reading session with volunteer reader and attentive children, colorful book displays, comfortable reading corner with bean bags and cushions, community learning environment",
-      alt: "読み聞かせ会の様子 4"
+      src: "/images/ws-04.jpg",
+      alt: "朗読ワークの様子 4"
     },
     {
-      src: "School assembly with teacher presenting the rainbow story to larger group of students, stage setup with rainbow decorations, engaged audience of children sitting on floor",
-      alt: "読み聞かせ会の様子 5"
+      src: "/images/ws-05.jpg",
+      alt: "朗読ワークの様子 5"
     },
     {
-      src: "Children creating their own rainbow art after story session, craft materials scattered on table, creative expression and learning through art, colorful drawings and happy faces",
-      alt: "読み聞かせ会の様子 6"
+      src: "/images/ws-06.jpg",
+      alt: "朗読ワークの様子 6"
+    },
+    {
+      src: "/images/ws-07.jpg",
+      alt: "朗読ワークの様子 7"
+    },
+    {
+      src: "/images/ws-08.jpg",
+      alt: "朗読ワークの様子 8"
+    },
+    {
+      src: "/images/ws-09.jpg",
+      alt: "朗読ワークの様子 9"
     }
   ];
 
@@ -193,12 +237,34 @@ export default function Home() {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  const getMaxSlides = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth >= 1024) {
+        // lg: 3 columns - calculate how many complete sets of 3 can be shown
+        return Math.ceil(sessionImages.length / 3) - 1;
+      } else if (window.innerWidth >= 768) {
+        // md: 2 columns - calculate how many complete sets of 2 can be shown
+        return Math.ceil(sessionImages.length / 2) - 1;
+      } else {
+        // sm: 1 column
+        return sessionImages.length - 1;
+      }
+    }
+    return sessionImages.length - 1;
+  };
+
   const nextImageSlide = () => {
-    setCurrentImageSlide((prev) => (prev + 1) % sessionImages.length);
+    setCurrentImageSlide((prev) => {
+      const maxSlides = getMaxSlides();
+      return prev >= maxSlides ? 0 : prev + 1;
+    });
   };
 
   const prevImageSlide = () => {
-    setCurrentImageSlide((prev) => (prev - 1 + sessionImages.length) % sessionImages.length);
+    setCurrentImageSlide((prev) => {
+      const maxSlides = getMaxSlides();
+      return prev <= 0 ? maxSlides : prev - 1;
+    });
   };
 
   return (
@@ -505,17 +571,31 @@ export default function Home() {
           
           <div className="max-w-6xl mx-auto">
             <div className="relative overflow-hidden rounded-2xl">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ 
-                  transform: `translateX(-${currentImageSlide * (100)}%)`,
+                style={{
+                  transform: (() => {
+                    if (typeof window !== 'undefined') {
+                      if (window.innerWidth >= 1024) {
+                        // lg: 3 columns, move by 100% (3 images at a time)
+                        return `translateX(-${currentImageSlide * 100}%)`;
+                      } else if (window.innerWidth >= 768) {
+                        // md: 2 columns, move by 100% (2 images at a time)
+                        return `translateX(-${currentImageSlide * 100}%)`;
+                      } else {
+                        // sm: 1 column, move by 100% (1 image at a time)
+                        return `translateX(-${currentImageSlide * 100}%)`;
+                      }
+                    }
+                    return `translateX(-${currentImageSlide * 100}%)`;
+                  })()
                 }}
               >
                 {sessionImages.map((image, index) => (
                   <div key={index} className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
                     <div className="relative group">
                       <img
-                        src={`https://readdy.ai/api/search-image?query=$%7BencodeURIComponent%28image.src%29%7D&width=400&height=300&seq=session-${index}&orientation=landscape`}
+                        src={image.src}
                         alt={image.alt}
                         className="w-full h-60 md:h-72 lg:h-80 object-cover rounded-2xl shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                       />
@@ -536,7 +616,7 @@ export default function Home() {
               </button>
               
               <div className="flex space-x-2">
-                {sessionImages.map((_, index) => (
+                {Array.from({ length: getMaxSlides() + 1 }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImageSlide(index)}
