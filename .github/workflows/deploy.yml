@@ -23,5 +23,5 @@ jobs:
           remote_folder: /
           cleanup: false
           include: '["**/*"]'
-          exclude: '[".git*", ".github*", "node_modules"]'
+          exclude: '[".git*", ".github*", "node_modules", "**/*.ts", "**/*.d.ts"]'
           passive: true
