@@ -19,7 +19,7 @@ jobs:
           port: 21
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          remote_folder: vivian/   # 公開フォルダ名
+          remote_folder: /vivian/   # 公開フォルダ名
           local_folder: ./         # リポジトリのルートからアップロード
           cleanup: false
           passive: true
