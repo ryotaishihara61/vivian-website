@@ -1,10 +1,16 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [selectedProgram, setSelectedProgram] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentImageSlide, setCurrentImageSlide] = useState(0);
+
+  // Touch/swipe handling refs
+  const testimonialRef = useRef<HTMLDivElement>(null);
+  const imageSlideRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   // Schema.org JSON-LD構造化データを動的に追加
   useEffect(() => {
@@ -296,6 +302,43 @@ export default function Home() {
     });
   };
 
+  // Touch event handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTestimonialTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextTestimonial();
+    } else if (isRightSwipe) {
+      prevTestimonial();
+    }
+  };
+
+  const handleImageSlideTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextImageSlide();
+    } else if (isRightSwipe) {
+      prevImageSlide();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* Hero Section */}
@@ -521,8 +564,15 @@ export default function Home() {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="relative overflow-hidden">
-              <div 
+            <div
+              ref={testimonialRef}
+              className="relative overflow-hidden select-none"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTestimonialTouchEnd}
+              style={{ touchAction: 'pan-y' }}
+            >
+              <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
               >
@@ -604,7 +654,14 @@ export default function Home() {
           </div>
           
           <div className="max-w-6xl mx-auto">
-            <div className="relative overflow-hidden rounded-2xl">
+            <div
+              ref={imageSlideRef}
+              className="relative overflow-hidden rounded-2xl select-none"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleImageSlideTouchEnd}
+              style={{ touchAction: 'pan-y' }}
+            >
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{
