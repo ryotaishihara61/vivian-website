@@ -3,7 +3,7 @@ name: Deploy to Lolipop via WebDAV
 on:
   push:
     branches:
-      - master   # ← ブランチ名に合わせる
+      - master   # ブランチ名に合わせる
 
 jobs:
   deploy:
@@ -12,13 +12,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # ビルドが必要ならここで実行
+      # ビルドが必要ならここで
       # - run: npm install && npm run build
 
       - name: Deploy via WebDAV
-        uses: shogo82148/actions-http-upload@v1
+        uses: buu700/webdav-upload@v1.3.0
         with:
-          url: https://staba-mahounogakuen.webdav-lolipop.jp/vivian/  # 公開フォルダ vivian を指定
+          url: https://staba-mahounogakuen.webdav-lolipop.jp/vivian/   # 公開フォルダ
           username: ${{ secrets.WEBDAV_USER }}
           password: ${{ secrets.WEBDAV_PASS }}
-          local-dir: ./out/
+          directory: ./out
