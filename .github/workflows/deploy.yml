@@ -1,30 +1,24 @@
-name: Deploy to Lolipop
+name: Deploy to Lolipop via WebDAV
 
 on:
   push:
     branches:
-      - master
+      - master   # ← ブランチ名に合わせる
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      # ビルド（必要な場合）
+      # ビルドが必要ならここで実行
       # - run: npm install && npm run build
 
-      - name: Deploy via FTP
-        uses: sand4rt/ftp-deployer@v1.5
+      - name: Deploy via WebDAV
+        uses: shogo82148/actions-http-upload@v1
         with:
-          sftp: false
-          host: ftp.lolipop.jp
-          port: 21
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          remote_folder: vivian        # ← ルート直下の vivian にデプロイ
-          local_folder: ./out          # ← ビルド成果物が入ってるフォルダ
-          include: '["*","**/*"]'
-          exclude: '[]'
-          passive: true
+          url: https://staba-mahounogakuen.webdav-lolipop.jp/vivian/  # 公開フォルダ vivian を指定
+          username: ${{ secrets.WEBDAV_USER }}
+          password: ${{ secrets.WEBDAV_PASS }}
+          local-dir: ./out/
