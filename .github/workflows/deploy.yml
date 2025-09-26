@@ -3,7 +3,7 @@ name: Deploy to Lolipop
 on:
   push:
     branches:
-      - master   # ← リポジトリのデフォルトブランチ名
+      - master
 
 jobs:
   deploy:
@@ -12,20 +12,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # ビルドが必要ならここに npm run build を追加
-      # - name: Install dependencies
-      #   run: npm install
-      # - name: Build project
-      #   run: npm run build
+      # ビルド（必要な場合）
+      # - run: npm install && npm run build
 
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via FTP
+        uses: sand4rt/ftp-deployer@v1.5
         with:
-          server: ftp.lolipop.jp
+          sftp: false
+          host: ftp.lolipop.jp
+          port: 21
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./out/        # ← GitHub上で生成される静的ファイルフォルダ
-          server-dir: /vivian/      # ← ロリポップの公開フォルダ vivian を直指定！
-          dangerous-clean-slate: true
+          remote_folder: vivian        # ← ルート直下の vivian にデプロイ
+          local_folder: ./out          # ← ビルド成果物が入ってるフォルダ
+          include: '["*","**/*"]'
+          exclude: '[]'
+          passive: true
