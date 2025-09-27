@@ -823,7 +823,7 @@ export default function Home() {
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                   <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-xl"
-                    src="https://www.youtube.com/embed/Cc9UPSnsb4s"
+                    src="https://www.youtube.com/embed/Bt4X-wUuuBE"
                     title="朗読ワーク実践編"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -835,7 +835,7 @@ export default function Home() {
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                   <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-xl"
-                    src="https://www.youtube.com/embed/sl3Af3GJ7GE"
+                    src="https://www.youtube.com/embed/gbJQOxnjv3w"
                     title="ワークショップの様子"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
