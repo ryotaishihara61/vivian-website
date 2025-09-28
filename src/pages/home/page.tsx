@@ -1064,6 +1064,9 @@ export default function Home() {
               <div className="text-gray-400 text-sm">
                 © 2024 Self Love LAB.事務局. All rights reserved.
               </div>
+              <div className="text-gray-400 text-sm">
+                運営：<a href="https://mahounogakuen.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 transition-colors">合同会社 魔法の学園</a>
+              </div>
             </div>
           </div>
         </div>
