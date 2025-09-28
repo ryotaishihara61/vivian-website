@@ -1052,7 +1052,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex items-center text-gray-300">
                   <i className="ri-mail-fill text-blue-400 mr-3"></i>
-                  <span>mahounogakuen.21@gmail.com</span>
+                  <a href="mailto:mahounogakuen.21@gmail.com" className="hover:text-purple-300 transition-colors">mahounogakuen.21@gmail.com</a>
                 </div>
               </div>
             </div>
