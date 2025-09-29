@@ -1046,13 +1046,30 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contact Info */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-white">お問い合わせ</h4>
-              <div className="space-y-3">
-                <div className="flex items-center text-gray-300">
-                  <i className="ri-mail-fill text-blue-400 mr-3"></i>
-                  <a href="mailto:mahounogakuen.21@gmail.com" className="hover:text-purple-300 transition-colors">mahounogakuen.21@gmail.com</a>
+            {/* Download and Contact Info */}
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-white">資料ダウンロード</h4>
+                <div className="space-y-3">
+                  <a
+                    href="/assets/pdf/education_flyer.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-gray-300 hover:text-purple-300 transition-colors"
+                  >
+                    <i className="ri-file-pdf-fill text-red-400 mr-3"></i>
+                    先生用ご案内チラシ（PDF）
+                  </a>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-white">お問い合わせ</h4>
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-300">
+                    <i className="ri-mail-fill text-blue-400 mr-3"></i>
+                    <a href="mailto:mahounogakuen.21@gmail.com" className="hover:text-purple-300 transition-colors">mahounogakuen.21@gmail.com</a>
+                  </div>
                 </div>
               </div>
             </div>
