@@ -1052,7 +1052,7 @@ export default function Home() {
                 <h4 className="text-lg font-semibold text-white">資料ダウンロード</h4>
                 <div className="space-y-3">
                   <a
-                    href="/assets/pdf/education_flyer.pdf"
+                    href="/pdf/education_flyer.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-gray-300 hover:text-purple-300 transition-colors"
