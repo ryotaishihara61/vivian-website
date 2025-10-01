@@ -1058,7 +1058,16 @@ export default function Home() {
                     className="inline-flex items-center text-gray-300 hover:text-purple-300 transition-colors"
                   >
                     <i className="ri-file-pdf-fill text-red-400 mr-3"></i>
-                    先生用ご案内チラシ（PDF）
+                    先生向けご案内チラシ（PDF）
+                  </a>
+                  <a
+                    href="/pdf/rainbow-project-for-educators-2025.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-gray-300 hover:text-purple-300 transition-colors"
+                  >
+                    <i className="ri-file-pdf-fill text-red-400 mr-3"></i>
+                    教育関係者向けビビアン活動説明資料（PDF）
                   </a>
                 </div>
               </div>
