@@ -5,6 +5,7 @@ export default function Home() {
   const [selectedProgram, setSelectedProgram] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentImageSlide, setCurrentImageSlide] = useState(0);
+  const [showAllNews, setShowAllNews] = useState(false);
 
   // Touch/swipe handling refs
   const testimonialRef = useRef<HTMLDivElement>(null);
@@ -193,6 +194,48 @@ export default function Home() {
       return () => window.removeEventListener('resize', handleResize);
     }
   }, [currentImageSlide]);
+
+  const newsItems = [
+    {
+      date: "2025.10.02",
+      content: (
+        <>
+          桜丘高校一年生の保健の授業で特別講義を実施しました。
+          <a
+            href="https://sakuragaoka.ac.jp/topics/38977"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-purple-600 hover:text-purple-800 underline"
+          >
+            授業の様子
+          </a>
+        </>
+      )
+    },
+    {
+      date: "2025.10.01",
+      content: (
+        <>
+          先生、教育関係者向けの資料を
+          <a
+            href="#footer"
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('footer')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="text-purple-600 hover:text-purple-800 underline"
+          >
+            ダウンロード
+          </a>
+          いただけるようになりました
+        </>
+      )
+    },
+    {
+      date: "2025.09.30",
+      content: "ウェブサイトを公開しました"
+    }
+  ];
 
   const programs = [
     {
@@ -557,51 +600,38 @@ export default function Home() {
                 お知らせ
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-40 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-transparent hover:scrollbar-thumb-purple-400">
-              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl hover:shadow-md transition-shadow duration-300">
-                <div className="flex flex-col gap-2">
-                  <span className="text-sm text-gray-500 font-medium">2025.10.02</span>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    桜丘高校一年生の保健の授業で特別講義を実施しました。
-                    <a
-                      href="https://sakuragaoka.ac.jp/topics/38977"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-purple-600 hover:text-purple-800 underline"
-                    >
-                      授業の様子
-                    </a>
-                  </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {(showAllNews ? newsItems : newsItems.slice(0, 2)).map((news, index) => (
+                <div key={index} className="bg-white/60 backdrop-blur-sm p-4 rounded-xl hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col gap-2">
+                    <span className="text-sm text-gray-500 font-medium">{news.date}</span>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      {news.content}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl hover:shadow-md transition-shadow duration-300">
-                <div className="flex flex-col gap-2">
-                  <span className="text-sm text-gray-500 font-medium">2025.10.01</span>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    先生、教育関係者向けの資料を
-                    <a
-                      href="#footer"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        document.querySelector('footer')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="text-purple-600 hover:text-purple-800 underline"
-                    >
-                      ダウンロード
-                    </a>
-                    いただけるようになりました
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl hover:shadow-md transition-shadow duration-300">
-                <div className="flex flex-col gap-2">
-                  <span className="text-sm text-gray-500 font-medium">2025.09.30</span>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    ウェブサイトを公開しました
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
+            {newsItems.length > 2 && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => setShowAllNews(!showAllNews)}
+                  className="text-purple-600 hover:text-purple-800 text-sm font-medium flex items-center justify-center mx-auto transition-colors duration-300"
+                >
+                  {showAllNews ? (
+                    <>
+                      <span>閉じる</span>
+                      <i className="ri-arrow-up-s-line ml-1"></i>
+                    </>
+                  ) : (
+                    <>
+                      <span>もっとみる</span>
+                      <i className="ri-arrow-down-s-line ml-1"></i>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
