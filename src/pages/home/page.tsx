@@ -640,8 +640,10 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
               絵本について
+              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-pink-400 rounded-full"></div>
+              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-400 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-left">
               「ビビアン」は、自分の弱みを受け入れることから始まる成長の物語です。<br />
@@ -690,8 +692,10 @@ export default function Home() {
       <section id="programs" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
               朗読×セルフラブ 体感ワーク・プログラム
+              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-400 rounded-full"></div>
+              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-pink-400 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-left">
               「声に出し、気持ちを味わいながら、弱みを"虹"に変える学びの時間」
@@ -729,8 +733,10 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
               朗読ワークの事例
+              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-blue-400 rounded-full"></div>
+              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-pink-400 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-left">
               実際に『ビビアン』の朗読ワークを体験された方々の声をご紹介します。子どもから大人まで、それぞれの立場でこんな気づきや変化がありました。
@@ -823,8 +829,10 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-pink-50 to-purple-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
               朗読ワークの様子
+              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-pink-400 rounded-full"></div>
+              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-400 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-left">
               温かい雰囲気の中で、子どもたちと一緒に心の成長を育んでいます
@@ -915,8 +923,10 @@ export default function Home() {
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6 relative inline-block px-6">
               朗読ワーク動画
+              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-red-400 rounded-full"></div>
+              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-pink-400 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto text-left">
               実際の朗読ワークの様子をご覧いただけます
@@ -958,8 +968,10 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-800 mb-6">
+              <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
                 朗読ワークのご依頼
+                <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-400 rounded-full"></div>
+                <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-pink-400 rounded-full"></div>
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto text-left">
                 学校・園・地域・コミュニティ、企業イベントや親子の集まりなど、さまざまな場面で開催いただけます。<br />
@@ -1074,8 +1086,10 @@ export default function Home() {
               <div className="order-2 lg:order-1">
                 <div className="text-center lg:text-left space-y-8">
                   <div>
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 relative inline-block px-6">
                       絵本の購入はこちら
+                      <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-10 bg-yellow-300 rounded-full"></div>
+                      <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-10 bg-purple-400 rounded-full"></div>
                     </h2>
                     <p className="text-xl text-gray-200 leading-relaxed mb-8 text-left">
                       ご家庭でも「ビビアン」の物語をお楽しみいただけます。<br />
