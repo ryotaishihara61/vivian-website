@@ -264,40 +264,56 @@ export default function Home() {
 
   const sessionImages = [
     {
-      src: "/assets/images/ws-01.jpg",
-      alt: "朗読ワークの様子 1"
+      src: "/assets/images/ws-13.JPG",
+      alt: "朗読ワークの様子 13"
     },
     {
-      src: "/assets/images/ws-02.jpg",
-      alt: "朗読ワークの様子 2"
+      src: "/assets/images/ws-12.JPG",
+      alt: "朗読ワークの様子 12"
     },
     {
-      src: "/assets/images/ws-03.jpg",
-      alt: "朗読ワークの様子 3"
+      src: "/assets/images/ws-11.JPG",
+      alt: "朗読ワークの様子 11"
     },
     {
-      src: "/assets/images/ws-04.jpg",
-      alt: "朗読ワークの様子 4"
+      src: "/assets/images/ws-10.JPG",
+      alt: "朗読ワークの様子 10"
     },
     {
-      src: "/assets/images/ws-05.jpg",
-      alt: "朗読ワークの様子 5"
-    },
-    {
-      src: "/assets/images/ws-06.jpg",
-      alt: "朗読ワークの様子 6"
-    },
-    {
-      src: "/assets/images/ws-07.jpg",
-      alt: "朗読ワークの様子 7"
+      src: "/assets/images/ws-09.jpg",
+      alt: "朗読ワークの様子 9"
     },
     {
       src: "/assets/images/ws-08.jpg",
       alt: "朗読ワークの様子 8"
     },
     {
-      src: "/assets/images/ws-09.jpg",
-      alt: "朗読ワークの様子 9"
+      src: "/assets/images/ws-07.jpg",
+      alt: "朗読ワークの様子 7"
+    },
+    {
+      src: "/assets/images/ws-06.jpg",
+      alt: "朗読ワークの様子 6"
+    },
+    {
+      src: "/assets/images/ws-05.jpg",
+      alt: "朗読ワークの様子 5"
+    },
+    {
+      src: "/assets/images/ws-04.jpg",
+      alt: "朗読ワークの様子 4"
+    },
+    {
+      src: "/assets/images/ws-03.jpg",
+      alt: "朗読ワークの様子 3"
+    },
+    {
+      src: "/assets/images/ws-02.jpg",
+      alt: "朗読ワークの様子 2"
+    },
+    {
+      src: "/assets/images/ws-01.jpg",
+      alt: "朗読ワークの様子 1"
     }
   ];
 
@@ -524,6 +540,65 @@ export default function Home() {
                 />
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center text-2xl animate-bounce">
                   ✨
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* News Section */}
+      <section className="py-12 bg-gradient-to-br from-blue-50/30 via-purple-50/30 to-pink-50/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-semibold text-gray-700 mb-2 flex items-center justify-center">
+                <i className="ri-newspaper-line text-purple-500 mr-2"></i>
+                お知らせ
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-40 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-transparent hover:scrollbar-thumb-purple-400">
+              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm text-gray-500 font-medium">2025.10.02</span>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    桜丘高校一年生の保健の授業で特別講義を実施しました。
+                    <a
+                      href="https://sakuragaoka.ac.jp/topics/38977"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-600 hover:text-purple-800 underline"
+                    >
+                      授業の様子
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm text-gray-500 font-medium">2025.10.01</span>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    先生、教育関係者向けの資料を
+                    <a
+                      href="#footer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.querySelector('footer')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-purple-600 hover:text-purple-800 underline"
+                    >
+                      ダウンロード
+                    </a>
+                    いただけるようになりました
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm text-gray-500 font-medium">2025.09.30</span>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    ウェブサイトを公開しました
+                  </p>
                 </div>
               </div>
             </div>
