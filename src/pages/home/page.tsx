@@ -562,7 +562,7 @@ export default function Home() {
                       console.log('contact-formが見つかりません');
                     }
                   }}
-                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer"
+                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer"
                 >
                   朗読ワークのご依頼
                 </button>
@@ -578,7 +578,7 @@ export default function Home() {
                       console.log('programsセクションが見つかりません');
                     }
                   }}
-                  className="border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-600 hover:text-white transition-all duration-300 whitespace-nowrap cursor-pointer"
+                  className="bg-white/90 backdrop-blur-sm border-2 border-purple-400 text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-500 hover:text-white hover:border-purple-500 hover:shadow-xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer"
                 >
                   活用プログラム
                 </button>
@@ -587,11 +587,11 @@ export default function Home() {
                     e.preventDefault();
                     e.stopPropagation();
                     console.log('絵本の購入ボタンがクリックされました');
-                    
+
                     // より確実な方法でセクションを見つける
                     const sections = document.querySelectorAll('section');
                     let purchaseSection = null;
-                    
+
                     // セクション内のテキストを検索
                     for (const section of sections) {
                       if (section.textContent && section.textContent.includes('絵本の購入はこちら')) {
@@ -599,7 +599,7 @@ export default function Home() {
                         break;
                       }
                     }
-                    
+
                     // 画像のalt属性からも検索
                     if (!purchaseSection) {
                       const purchaseImage = document.querySelector('img[alt*="絵本ビビアン - 購入ページ"]');
@@ -615,7 +615,7 @@ export default function Home() {
                       window.open('https://selflovelab.base.shop/items/87374284', '_blank', 'noopener,noreferrer');
                     }
                   }}
-                  className="bg-gradient-to-r from-green-500 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer relative z-30"
+                  className="bg-gradient-to-r from-blue-400 to-cyan-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer relative z-30"
                   style={{ pointerEvents: 'auto' }}
                 >
                   絵本の購入
