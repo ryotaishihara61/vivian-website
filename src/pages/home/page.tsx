@@ -308,8 +308,8 @@ export default function Home() {
 
   const sessionImages = [
     {
-      src: "/assets/images/ws-13.JPG",
-      alt: "朗読ワークの様子 13"
+      src: "/assets/images/ws-10.JPG",
+      alt: "朗読ワークの様子 10"
     },
     {
       src: "/assets/images/ws-12.JPG",
@@ -320,8 +320,8 @@ export default function Home() {
       alt: "朗読ワークの様子 11"
     },
     {
-      src: "/assets/images/ws-10.JPG",
-      alt: "朗読ワークの様子 10"
+      src: "/assets/images/ws-13.JPG",
+      alt: "朗読ワークの様子 13"
     },
     {
       src: "/assets/images/ws-09.jpg",
