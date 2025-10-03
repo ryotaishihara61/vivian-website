@@ -1318,7 +1318,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
-              代表Ranのブログ
+              Blog
               <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-blue-400 rounded-full"></div>
               <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-pink-400 rounded-full"></div>
             </h2>
