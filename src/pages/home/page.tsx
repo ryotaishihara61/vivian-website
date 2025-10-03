@@ -1224,6 +1224,15 @@ export default function Home() {
                     <i className="ri-file-pdf-fill text-red-400 mr-3"></i>
                     教育関係者向けビビアン活動説明資料（PDF）
                   </a>
+                  <a
+                    href="/pdf/vivian_characters.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-gray-300 hover:text-purple-300 transition-colors"
+                  >
+                    <i className="ri-file-pdf-fill text-red-400 mr-3"></i>
+                    朗読ワーク資料 vivian登場人物（PDF）
+                  </a>
                 </div>
               </div>
 
