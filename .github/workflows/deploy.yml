@@ -23,9 +23,15 @@ jobs:
       - name: Build project
         run: npm run build   # out/ が生成される
 
-      # 画像フォルダを事前に作成
-      - name: Create images directory if not exists
+      # 必要なディレクトリを事前に作成
+      - name: Create necessary directories
         run: |
+          # assetsディレクトリ
+          curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+               -X MKCOL \
+               "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/assets" || true
+
+          # assets/imagesディレクトリ
           curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
                -X MKCOL \
                "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/assets/images" || true
@@ -34,9 +40,26 @@ jobs:
         run: |
           find ./out -type f | while read file; do
             remote_path="${file#./out/}"
+            dir_path=$(dirname "$remote_path")
+
+            # ディレクトリ構造を作成
+            if [ "$dir_path" != "." ]; then
+              IFS='/' read -ra PARTS <<< "$dir_path"
+              current_path=""
+              for part in "${PARTS[@]}"; do
+                if [ -n "$current_path" ]; then
+                  current_path="$current_path/$part"
+                else
+                  current_path="$part"
+                fi
+                curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
+                     -X MKCOL \
+                     "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/$current_path" 2>/dev/null || true
+              done
+            fi
+
             echo "Uploading $file to $remote_path"
             curl -sS -u "${{ secrets.WEBDAV_USER }}:${{ secrets.WEBDAV_PASS }}" \
-                 --create-dirs \
                  -T "$file" \
                  "https://staba-mahounogakuen.webdav-lolipop.jp/vivian/$remote_path"
           done
