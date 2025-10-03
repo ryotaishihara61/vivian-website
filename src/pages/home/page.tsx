@@ -1,5 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
+import Navigation from '../../components/Navigation';
 
 interface BlogPost {
   title: string;
@@ -561,8 +562,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+      {/* Navigation */}
+      <Navigation />
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 py-20 pt-32">
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Image Section - First on mobile, second on desktop */}
@@ -719,7 +723,7 @@ export default function Home() {
       </section>
 
       {/* News Section */}
-      <section className="py-12 bg-gradient-to-br from-blue-50/30 via-purple-50/30 to-pink-50/30">
+      <section id="news" className="py-12 bg-gradient-to-br from-blue-50/30 via-purple-50/30 to-pink-50/30">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
@@ -765,7 +769,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-white">
+      <section id="about" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
@@ -911,7 +915,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section - Now with Slider */}
-      <section className="py-20 bg-white">
+      <section id="testimonials" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
@@ -1101,7 +1105,7 @@ export default function Home() {
       </section>
 
       {/* YouTube Video Section */}
-      <section className="py-20 bg-black">
+      <section id="video" className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-6 relative inline-block px-6">
@@ -1259,7 +1263,7 @@ export default function Home() {
       </section>
 
       {/* Book Purchase Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-purple-900 relative overflow-hidden">
+      <section id="purchase" className="py-20 bg-gradient-to-br from-gray-900 to-purple-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
@@ -1314,7 +1318,7 @@ export default function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+      <section id="blog" className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-6 relative inline-block px-6">
