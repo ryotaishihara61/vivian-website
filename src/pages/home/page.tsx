@@ -6,6 +6,7 @@ export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentImageSlide, setCurrentImageSlide] = useState(0);
   const [showAllNews, setShowAllNews] = useState(false);
+  const [showCharacterModal, setShowCharacterModal] = useState(false);
 
   // Touch/swipe handling refs
   const testimonialRef = useRef<HTMLDivElement>(null);
@@ -721,6 +722,59 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Characters Section */}
+          <div className="max-w-5xl mx-auto mt-20">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-gray-800 mb-4 relative inline-block px-6">
+                登場人物紹介
+                <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 bg-pink-400 rounded-full"></div>
+                <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-6 bg-purple-400 rounded-full"></div>
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto text-left">
+                物語には個性豊かなキャラクターたちが登場します。それぞれの「虹」を持つ仲間たちと一緒に、成長の旅を体験してください。
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 rounded-3xl shadow-xl p-6 md:p-8 mx-auto">
+              <img
+                src="/assets/images/vivian_characters.jpg"
+                alt="ビビアンの登場人物たち - それぞれの個性と虹を持つキャラクター"
+                className="w-full rounded-2xl shadow-lg md:cursor-pointer md:hover:opacity-90 transition-opacity duration-300"
+                onClick={(e) => {
+                  // Desktop only: open modal
+                  if (window.innerWidth >= 768) {
+                    setShowCharacterModal(true);
+                  }
+                }}
+              />
+              <p className="hidden md:block text-center text-sm text-gray-500 mt-4">
+                クリックで拡大表示
+              </p>
+            </div>
+          </div>
+
+          {/* Character Modal - Desktop only */}
+          {showCharacterModal && (
+            <div
+              className="hidden md:flex fixed inset-0 bg-black/80 z-50 items-center justify-center p-4"
+              onClick={() => setShowCharacterModal(false)}
+            >
+              <div className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center">
+                <button
+                  onClick={() => setShowCharacterModal(false)}
+                  className="absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 transition-colors z-10"
+                >
+                  <i className="ri-close-line"></i>
+                </button>
+                <img
+                  src="/assets/images/vivian_characters.jpg"
+                  alt="ビビアンの登場人物たち - それぞれの個性と虹を持つキャラクター"
+                  className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
