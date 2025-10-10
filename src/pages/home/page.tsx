@@ -290,6 +290,10 @@ export default function Home() {
 
   const newsItems = [
     {
+      date: "2025.10.09",
+      content: "兵庫県の公立小学校5年生の授業でビビアン朗読ワークを実施しました"
+    },
+    {
       date: "2025.10.02",
       content: (
         <>
